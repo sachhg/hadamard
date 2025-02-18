@@ -22,13 +22,6 @@ int main(){
 
     Qubit qub(alpha, beta);
 
-    if (!(qub.verifyQubit())){
-
-        cout << "Invalid Qubit, " << alpha << "^2 + " << beta << "^2 = " << (pow(alpha, 2) + pow(beta, 2)) << endl;
-        return 0;
-
-    }
-
     Qubit qubH = qub.applyHadamard();
 
     cout << "Result of Hadamard Gate applied to your qubit: ";

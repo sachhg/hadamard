@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 using namespace std;
 
@@ -13,22 +14,33 @@ Qubit::Qubit(){
 
 }
 
-Qubit::Qubit(long double alpha, long double beta){
-
-    this->alpha = alpha;
-    this->beta = beta;
-
-}
-
-bool Qubit::verifyQubit() const {
+bool Qubit::verifyQubit(long double a, long double b) const {
 
     long double roomForError = 1e-9;
 
-    long double sqSum = pow(alpha, 2) + pow(beta, 2);
+    long double sqSum = pow(a, 2) + pow(b, 2);
 
     return (abs(sqSum - 1.00)) < roomForError;
 
 }
+
+Qubit::Qubit(long double alpha, long double beta){
+
+    if (verifyQubit(alpha, beta)){
+
+        this->alpha = alpha;
+        this->beta = beta;
+
+    } else {
+
+        cout << "Invalid Qubit, " << alpha << "^2 + " << beta << "^2 = " << (pow(alpha, 2) + pow(beta, 2)) << endl;
+        throw std::runtime_error("Invalid Qubit");
+
+    }
+
+}
+
+
 
 
 void Qubit::printQubit(){

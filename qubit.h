@@ -15,8 +15,6 @@ class Qubit {
         void setBeta(long double b);
         void setAB(long double a, long double b);
 
-        bool verifyQubit() const;
-
 
 
     private:
@@ -25,6 +23,7 @@ class Qubit {
         long double alpha;
         long double beta;
 
+        bool verifyQubit(long double a, long double b) const;
 
 
 
